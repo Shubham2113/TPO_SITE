@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Info</title>
+    <style>
+    body{
+
+      padding: 30px;
+      margin: 0px;
+      background-color: #fdf0d5;
+    }
+    .container{
+      margin:auto;
+      background-color: #e1e5f2;
+      background-color: rgba(0,0,0,0.1);
+      font-family: 'Libre Baskerville', serif;
+      font-family: 'Roboto', sans-serif;
+      font-family: 'Rubik', sans-serif;
+      font-family: 'Vollkorn', serif;
+      border-radius: 15px;
+      padding-bottom: 2px;
+    }
+
+    h1{
+      text-align: center;
+      font-family: 'Bangers', cursive;
+       font-family: 'Libre Baskerville', serif;
+       font-family: 'Roboto', sans-serif;
+       font-family: 'Rubik', sans-serif;
+       font-family: 'Vollkorn', serif;
+      padding-bottom: 10px;
+    }
+    .form-group .form-control ,text{
+      border: 0px;
+      padding: 10px;
+      padding-bottom: 10px;
+      background: transparent;
+      border-bottom: 3px solid #29bf12;
+      color: #29bf12;
+      width: 120%;
+      margin: auto;
+    }
+    #one{
+     width: 50%;
+     background-color: #29bf12;
+     margin-top: 10px;
+     margin-left: 350px;
+    }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Libre+Baskerville:wght@400;700&family=Roboto:wght@300&family=Rubik:wght@300&family=Vollkorn:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Roboto:wght@300&family=Rubik:wght@300&family=Vollkorn:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <h1>Personal Details</h1>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{user.username}}" name="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Name</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{user.get_full_name}}" name="name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="email" class="form-control" value="{{user.email}}" name="email" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Roll No</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.roll_no}}" name="roll_no" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Passing Year</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.passing_year}}" name="passing_year" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Branch</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <select class="form-control" name="branch" required>
+                    <option value="{{info.branch}}" selected>{{info.branch|upper}}</option>
+                    <option value="CSE">CSE</option>
+                    <option value="IT">IT</option>
+                    <option value="ECE">ECE</option>
+                    <option value="CSE">ELE</option>
+                    <option value="ME">ME</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Course</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <select class="form-control" name="course" required>
+                    <option value="{{info.course}}" selected>{{info.course|upper}}</option>
+                    <option value="BTECH">BTECH</option>
+                    <option value="MTECH">MTECH</option>
+                    <option value="MBA">MBA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="BCA">BCA</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">College</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.college|title}}" name="college" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Date Of Birth</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="date" class="form-control" value="{{info.dob}}" name="dob" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Father Name</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.father_name}}" name="father_name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Mother Name</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.mother_name}}" name="mother_name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Father's Number</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="tel" class="form-control" value="{{info.father_number}}" name="father_number" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Mother's Number</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="tel" class="form-control" value="{{info.mother_number}}" name="mother_number" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Personal Number</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="tel" class="form-control" value="{{info.phone_number}}" name="phone_number" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.address}}" name="address" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">City</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.city}}" name="city" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Pincode</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="number" class="form-control" value="{{info.pincode}}" name="pincode" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">State</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" value="{{info.state}}" name="state" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Alternate Email</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <input type="email" class="form-control" value="{{info.alternate_gmail}}" name="alternate_gmail" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Gender</label>
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <select class="form-control" name="gender" required>
+                    <option value="{{info.gender}}" selected>{{info.gender|upper}}</option>
+                    <option value="male">MALE</option>
+                    <option value="female">FEMALE</option>
+                    <option value="other">OTHER</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- <div class="form-group">
+            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                <input class="btn btn-primary" type="submit" value="SUBMIT">
+            </div>
+        </div>-->
+    </form>
+</div>
+<input id="one" class="btn btn-primary" type="submit" value="SUBMIT">
+</body>
+</html>
